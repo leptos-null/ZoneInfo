@@ -17,8 +17,7 @@ struct ContentView: View {
     
     private var annotations: [MKAnnotation] {
         entries.map { entry in
-            let point = MKPointAnnotation()
-            point.coordinate = entry.coordinate
+            let point = TimeZoneEntry.Annotation(entry: entry)
             point.title = entry.timeZone?.localizedName(for: .generic, locale: locale)
             point.subtitle = entry.identifier
             return point

@@ -12,8 +12,20 @@ struct ContentView: View {
     let entries: [TimeZoneEntry]
     
     @State private var mapType: MKMapType = .mutedStandard
+    @State private var selectedAnnotation: MKAnnotation?
     
     @Environment(\.locale) private var locale
+#if canImport(UIKit)
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+#endif
+    
+    private var horizontalSizeClassIsCompact: Bool {
+#if canImport(UIKit)
+        (horizontalSizeClass == .compact)
+#else
+        false
+#endif
+    }
     
     private var annotations: [MKAnnotation] {
         entries.map { entry in
@@ -36,8 +48,17 @@ struct ContentView: View {
     }
     
     var body: some View {
-        MapView(annotations: annotations, mapType: mapType)
+        MapView(selection: $selectedAnnotation, annotations: annotations, mapType: mapType)
             .ignoresSafeArea()
+            .overlay(alignment: .bottomTrailing) {
+                if let timeZoneAnnotation = selectedAnnotation as? TimeZoneEntry.Annotation {
+                    TimeZoneEntryView(entry: timeZoneAnnotation.entry)
+                        .frame(maxWidth: horizontalSizeClassIsCompact ? .infinity : 380, alignment: .trailing)
+                        .scenePadding()
+                        .background(.ultraThickMaterial, ignoresSafeAreaEdges: .bottom)
+                        .transition(.opacity.animation(.easeInOut))
+                }
+            }
     }
 }
 

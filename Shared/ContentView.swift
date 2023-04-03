@@ -11,7 +11,7 @@ import MapKit
 struct ContentView: View {
     let entries: [TimeZoneEntry]
     
-    @State private var mapType: MKMapType = .mutedStandard
+    @State private var mapType: MKMapType = .hybridFlyover
     @State private var selectedAnnotation: MKAnnotation?
     
     @Environment(\.locale) private var locale

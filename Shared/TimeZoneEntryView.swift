@@ -10,11 +10,16 @@ import SwiftUI
 struct TimeZoneEntryView: View {
     let entry: TimeZoneEntry
     
+    @Environment(\.locale) private var locale
+    @Environment(\.calendar) private var calendar
+    
     private var dateFormatStyle: Date.FormatStyle? {
         guard let timeZone = entry.timeZone else { return nil }
         
         var style: Date.FormatStyle = .dateTime
         style.timeZone = timeZone
+        style.locale = locale
+        style.calendar = calendar
         style.capitalizationContext = .standalone
         return style
     }
@@ -62,6 +67,10 @@ struct TimeZoneEntryView: View {
                         }
                         
                         Divider()
+                    }
+                    
+                    KeyValueView(key: "ISO 8601") {
+                        Text(timelineContext.date, format: format.timeZone(.iso8601(.long)))
                     }
                     
                     KeyValueView(key: "Local Time") {

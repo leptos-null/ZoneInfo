@@ -1,6 +1,6 @@
 ## ZoneInfo
 
-ZoneInfo is an app for iOS, iPadOS, and macOS to view the time zones in the system's time zone database.
+ZoneInfo is an app for iOS, iPadOS, macOS, and visionOS to view the time zones in the system's time zone database.
 
 The app reads from `/usr/share/zoneinfo/zone.tab` which is discussed in https://data.iana.org/time-zones/tz-link.html
 

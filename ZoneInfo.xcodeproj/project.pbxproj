@@ -8,21 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FA07BA52283FC2F8005B8EF7 /* ZoneInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA42283FC2F7005B8EF7 /* ZoneInfoApp.swift */; };
-		FA07BA53283FC2F8005B8EF7 /* ZoneInfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA42283FC2F7005B8EF7 /* ZoneInfoApp.swift */; };
 		FA07BA54283FC2F8005B8EF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA43283FC2F7005B8EF7 /* ContentView.swift */; };
-		FA07BA55283FC2F8005B8EF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA43283FC2F7005B8EF7 /* ContentView.swift */; };
 		FA07BA56283FC2F8005B8EF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */; };
-		FA07BA57283FC2F8005B8EF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */; };
 		FA07BA61283FC3B5005B8EF7 /* TimeZoneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA60283FC3B5005B8EF7 /* TimeZoneEntry.swift */; };
-		FA07BA62283FC3B5005B8EF7 /* TimeZoneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA60283FC3B5005B8EF7 /* TimeZoneEntry.swift */; };
 		FA3E97C6283FCA2300708EA5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E97C5283FCA2300708EA5 /* MapView.swift */; };
-		FA3E97C7283FCA2300708EA5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E97C5283FCA2300708EA5 /* MapView.swift */; };
 		FAE17517284D0D4B0059678D /* TimeZoneEntry+Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE17516284D0D4B0059678D /* TimeZoneEntry+Annotation.swift */; };
-		FAE17518284D0D4B0059678D /* TimeZoneEntry+Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE17516284D0D4B0059678D /* TimeZoneEntry+Annotation.swift */; };
 		FAE1751A284D0D700059678D /* TimeZoneEntry+AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE17519284D0D700059678D /* TimeZoneEntry+AnnotationView.swift */; };
-		FAE1751B284D0D700059678D /* TimeZoneEntry+AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE17519284D0D700059678D /* TimeZoneEntry+AnnotationView.swift */; };
 		FAE1751D284D6A4A0059678D /* TimeZoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */; };
-		FAE1751E284D6A4A0059678D /* TimeZoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +22,7 @@
 		FA07BA43283FC2F7005B8EF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA07BA49283FC2F8005B8EF7 /* ZoneInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZoneInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA07BA4F283FC2F8005B8EF7 /* ZoneInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZoneInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA07BA51283FC2F8005B8EF7 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		FA07BA51283FC2F8005B8EF7 /* ZoneInfo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZoneInfo.entitlements; sourceTree = "<group>"; };
 		FA07BA60283FC3B5005B8EF7 /* TimeZoneEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneEntry.swift; sourceTree = "<group>"; };
 		FA3E97C5283FCA2300708EA5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FAE17516284D0D4B0059678D /* TimeZoneEntry+Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZoneEntry+Annotation.swift"; sourceTree = "<group>"; };
@@ -47,26 +38,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA07BA4C283FC2F8005B8EF7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		FA07BA3C283FC2F7005B8EF7 = {
 			isa = PBXGroup;
 			children = (
-				FA07BA41283FC2F7005B8EF7 /* Shared */,
-				FA07BA50283FC2F8005B8EF7 /* macOS */,
+				FA07BA41283FC2F7005B8EF7 /* ZoneInfo */,
 				FA07BA4A283FC2F8005B8EF7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FA07BA41283FC2F7005B8EF7 /* Shared */ = {
+		FA07BA41283FC2F7005B8EF7 /* ZoneInfo */ = {
 			isa = PBXGroup;
 			children = (
 				FA07BA42283FC2F7005B8EF7 /* ZoneInfoApp.swift */,
@@ -77,33 +60,25 @@
 				FA07BA43283FC2F7005B8EF7 /* ContentView.swift */,
 				FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */,
 				FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */,
+				FA07BA51283FC2F8005B8EF7 /* ZoneInfo.entitlements */,
 			);
-			path = Shared;
+			path = ZoneInfo;
 			sourceTree = "<group>";
 		};
 		FA07BA4A283FC2F8005B8EF7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				FA07BA49283FC2F8005B8EF7 /* ZoneInfo.app */,
-				FA07BA4F283FC2F8005B8EF7 /* ZoneInfo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FA07BA50283FC2F8005B8EF7 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				FA07BA51283FC2F8005B8EF7 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA07BA48283FC2F8005B8EF7 /* ZoneInfo (iOS) */ = {
+		FA07BA48283FC2F8005B8EF7 /* ZoneInfo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA07BA5A283FC2F8005B8EF7 /* Build configuration list for PBXNativeTarget "ZoneInfo (iOS)" */;
+			buildConfigurationList = FA07BA5A283FC2F8005B8EF7 /* Build configuration list for PBXNativeTarget "ZoneInfo" */;
 			buildPhases = (
 				FA07BA45283FC2F8005B8EF7 /* Sources */,
 				FA07BA46283FC2F8005B8EF7 /* Frameworks */,
@@ -113,26 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = "ZoneInfo (iOS)";
+			name = ZoneInfo;
 			productName = "ZoneInfo (iOS)";
 			productReference = FA07BA49283FC2F8005B8EF7 /* ZoneInfo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		FA07BA4E283FC2F8005B8EF7 /* ZoneInfo (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FA07BA5D283FC2F8005B8EF7 /* Build configuration list for PBXNativeTarget "ZoneInfo (macOS)" */;
-			buildPhases = (
-				FA07BA4B283FC2F8005B8EF7 /* Sources */,
-				FA07BA4C283FC2F8005B8EF7 /* Frameworks */,
-				FA07BA4D283FC2F8005B8EF7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ZoneInfo (macOS)";
-			productName = "ZoneInfo (macOS)";
-			productReference = FA07BA4F283FC2F8005B8EF7 /* ZoneInfo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,9 +104,6 @@
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					FA07BA48283FC2F8005B8EF7 = {
-						CreatedOnToolsVersion = 13.3;
-					};
-					FA07BA4E283FC2F8005B8EF7 = {
 						CreatedOnToolsVersion = 13.3;
 					};
 				};
@@ -166,8 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA07BA48283FC2F8005B8EF7 /* ZoneInfo (iOS) */,
-				FA07BA4E283FC2F8005B8EF7 /* ZoneInfo (macOS) */,
+				FA07BA48283FC2F8005B8EF7 /* ZoneInfo */,
 			);
 		};
 /* End PBXProject section */
@@ -178,14 +132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA07BA56283FC2F8005B8EF7 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FA07BA4D283FC2F8005B8EF7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA07BA57283FC2F8005B8EF7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,20 +149,6 @@
 				FA07BA61283FC3B5005B8EF7 /* TimeZoneEntry.swift in Sources */,
 				FAE17517284D0D4B0059678D /* TimeZoneEntry+Annotation.swift in Sources */,
 				FAE1751A284D0D700059678D /* TimeZoneEntry+AnnotationView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FA07BA4B283FC2F8005B8EF7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FAE1751E284D6A4A0059678D /* TimeZoneEntryView.swift in Sources */,
-				FA07BA55283FC2F8005B8EF7 /* ContentView.swift in Sources */,
-				FA3E97C7283FCA2300708EA5 /* MapView.swift in Sources */,
-				FA07BA53283FC2F8005B8EF7 /* ZoneInfoApp.swift in Sources */,
-				FA07BA62283FC3B5005B8EF7 /* TimeZoneEntry.swift in Sources */,
-				FAE17518284D0D4B0059678D /* TimeZoneEntry+Annotation.swift in Sources */,
-				FAE1751B284D0D700059678D /* TimeZoneEntry+AnnotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +188,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -273,6 +206,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -314,6 +248,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -325,6 +260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -337,11 +273,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ZoneInfo/ZoneInfo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7P56K8K4MY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -352,10 +289,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = null.leptos.ZoneInfo;
 				PRODUCT_NAME = ZoneInfo;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -367,11 +307,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ZoneInfo/ZoneInfo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7P56K8K4MY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -382,70 +323,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = null.leptos.ZoneInfo;
 				PRODUCT_NAME = ZoneInfo;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		FA07BA5E283FC2F8005B8EF7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7P56K8K4MY;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = null.leptos.ZoneInfo;
-				PRODUCT_NAME = ZoneInfo;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		FA07BA5F283FC2F8005B8EF7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7P56K8K4MY;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = null.leptos.ZoneInfo;
-				PRODUCT_NAME = ZoneInfo;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -461,20 +349,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA07BA5A283FC2F8005B8EF7 /* Build configuration list for PBXNativeTarget "ZoneInfo (iOS)" */ = {
+		FA07BA5A283FC2F8005B8EF7 /* Build configuration list for PBXNativeTarget "ZoneInfo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA07BA5B283FC2F8005B8EF7 /* Debug */,
 				FA07BA5C283FC2F8005B8EF7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FA07BA5D283FC2F8005B8EF7 /* Build configuration list for PBXNativeTarget "ZoneInfo (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FA07BA5E283FC2F8005B8EF7 /* Debug */,
-				FA07BA5F283FC2F8005B8EF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -12,17 +12,12 @@ import RealityKit
 import CoreLocation
 
 struct RealityGlobeView: View {
-    let entries: [TimeZoneEntry]
+    let table: TimeZoneTable
     
     init() {
         // "/var/db/timezone/zoneinfo/zone.tab"
         let file = URL(fileURLWithPath: "/usr/share/zoneinfo/zone.tab")
-        let contents = try! String(contentsOf: file)
-        
-        entries = contents
-            .split(whereSeparator: \.isNewline)
-            .filter { !$0.hasPrefix("#") }
-            .compactMap { TimeZoneEntry(line: .init($0)) }
+        table = try! TimeZoneTable(url: file)
     }
     
     var body: some View {
@@ -65,7 +60,7 @@ struct RealityGlobeView: View {
             let pinRadius: Float = 0.004
             let pinMaterial = UnlitMaterial(color: .systemPurple.withAlphaComponent(0.7))
             
-            for entry in entries {
+            for entry in table.entries {
                 let pin = ModelEntity(
                     mesh: .generateSphere(radius: pinRadius),
                     materials: [pinMaterial],

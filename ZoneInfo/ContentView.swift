@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
-    let entries: [TimeZoneEntry]
+    let table: TimeZoneTable
     
     @State private var mapType: MKMapType = .hybridFlyover
     @State private var selectedAnnotation: MKAnnotation?
@@ -28,7 +28,7 @@ struct ContentView: View {
     }
     
     private var annotations: [MKAnnotation] {
-        entries.map { entry in
+        table.entries.map { entry in
             let point = TimeZoneEntry.Annotation(entry: entry)
             point.title = entry.timeZone?.localizedName(for: .generic, locale: locale)
             point.subtitle = entry.identifier
@@ -39,12 +39,7 @@ struct ContentView: View {
     init() {
         // "/var/db/timezone/zoneinfo/zone.tab"
         let file = URL(fileURLWithPath: "/usr/share/zoneinfo/zone.tab")
-        let contents = try! String(contentsOf: file)
-        
-        entries = contents
-            .split(whereSeparator: \.isNewline)
-            .filter { !$0.hasPrefix("#") }
-            .compactMap { TimeZoneEntry(line: .init($0)) }
+        table = try! TimeZoneTable(url: file)
     }
     
     var body: some View {

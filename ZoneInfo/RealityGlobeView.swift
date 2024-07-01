@@ -92,13 +92,14 @@ struct RealityGlobeView: View {
 
 extension CLLocationCoordinate2D {
     func realityKitXYZ(for radius: Float) -> SIMD3<Float> {
-        let phi = Float(latitude) / 180 * .pi
-        let lambda = Float(longitude) / 180 * .pi
+        let point = SIMD2(Float(latitude), Float(longitude))
+        let dist = sincospi(point / 180) // divide by 180 degrees
         
+        // (x: phi, y: lambda)
         return .init(
-            x: radius * cos(phi) * sin(lambda),
-            y: radius * sin(phi),
-            z: radius * cos(phi) * cos(lambda)
+            x: radius * dist.cos.x * dist.sin.y,
+            y: radius * dist.sin.x,
+            z: radius * dist.cos.x * dist.cos.y
         )
     }
 }

@@ -10,8 +10,15 @@ import SwiftUI
 @main
 struct ZoneInfoApp: App {
     var body: some Scene {
+#if os(visionOS)
+        WindowGroup {
+            RealityGlobeView()
+        }
+        .windowStyle(.volumetric)
+#else
         WindowGroup {
             ContentView()
         }
+#endif
     }
 }

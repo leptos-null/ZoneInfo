@@ -7,15 +7,6 @@
 
 import MapKit
 
-#if canImport(UIKit)
-private typealias MKColor = UIColor
-#elseif canImport(AppKit)
-private typealias MKColor = NSColor
-#else
-#error("Unknown UI framework")
-#endif
-
-
 extension TimeZoneEntry {
     final class AnnotationView: MKMarkerAnnotationView {
         
@@ -31,36 +22,11 @@ extension TimeZoneEntry {
             fatalError("init(coder:) has not been implemented")
         }
         
-        private func markerColor(for observer: Date) -> MKColor {
+        private func markerColor(for observer: Date) -> SystemColor {
             guard let timeZoneAnnotation = annotation as? TimeZoneEntry.Annotation else {
                 return .init(white: 0.4, alpha: 1)
             }
-            
-            guard let timeZone = timeZoneAnnotation.entry.timeZone else {
-                return .init(white: 0.6, alpha: 1)
-            }
-            
-            let seconds = timeZone.secondsFromGMT(for: observer)
-            let normalized = CGFloat(seconds)/(12 * 60 * 60) // [-1, +1]
-            
-            // let x = 12/magnitude
-            // assuming that time zone offsets fall on the hour (not all do)
-            // `x` is the number of colors that will appear on the map
-            // or in other words, a given color will repeat every `x` time zones.
-            // if x > 24, some hues will be unused.
-            // the greater x is, the less contrast there is between adjacent time zones
-            // if x is not an integer, there will be an un-even distribution of colors.
-            //
-            // therefore, I suggest that x is an integer in the range [3, 24]
-            // meaning that magnitude may take on the values
-            //   0.5, 1.0, 2.0, 3.0, 4.0
-            let magnitude: CGFloat = 2
-            // only the fraction component of `shift` is used
-            let shift: CGFloat = 0.075
-            
-            let huePhase = (normalized + 1) * magnitude + shift
-            let hueComponent = huePhase.truncatingRemainder(dividingBy: 1)
-            return .init(hue: hueComponent, saturation: 0.9, brightness: 0.74, alpha: 1)
+            return timeZoneAnnotation.entry.markerColor(for: observer)
         }
         
         private func glyphText(for observer: Date) -> String? {

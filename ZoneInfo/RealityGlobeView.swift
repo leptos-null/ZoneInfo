@@ -12,7 +12,13 @@ import RealityKit
 import CoreLocation
 
 struct RealityGlobeView: View {
+    private enum AttachmentID: Hashable {
+        case entryDetail
+    }
+    
     let table: TimeZoneTable
+    
+    @State private var selectedEntry: TimeZoneEntry?
     
     init() {
         // "/var/db/timezone/zoneinfo/zone.tab"
@@ -21,7 +27,7 @@ struct RealityGlobeView: View {
     }
     
     var body: some View {
-        RealityView { realityContent in
+        RealityView { realityContent, attachments in
             TimeZoneEntryComponent.registerComponent()
             
             var globeMaterial = PhysicallyBasedMaterial()
@@ -77,7 +83,29 @@ struct RealityGlobeView: View {
                 globe.addChild(pin)
             }
             
+            if let detailAttachment = attachments.entity(for: AttachmentID.entryDetail) {
+                detailAttachment.position = .init(x: 0, y: -0.32, z: 0.23)
+                globe.addChild(detailAttachment)
+            }
+            
+            globe.position = .init(x: 0, y: 0.06, z: 0)
             realityContent.add(globe)
+        } placeholder: {
+            ProgressView()
+        } attachments: {
+            Attachment(id: AttachmentID.entryDetail) {
+                Group {
+                    if let selectedEntry {
+                        TimeZoneEntryColumnedView(entry: selectedEntry)
+                            .padding(.horizontal)
+                    } else {
+                        Text("Select a time zone marker on the globe to view details")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .scenePadding()
+                .glassBackgroundEffect(displayMode: .implicit)
+            }
         }
         .gesture(
             TapGesture()
@@ -85,6 +113,7 @@ struct RealityGlobeView: View {
                 .onEnded { value in
                     guard let entryComponent = value.entity.components[TimeZoneEntryComponent.self] else { return }
                     print(entryComponent.entry)
+                    selectedEntry = entryComponent.entry
                 }
         )
     }

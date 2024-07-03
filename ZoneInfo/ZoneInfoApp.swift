@@ -15,6 +15,7 @@ struct ZoneInfoApp: App {
             RealityGlobeView()
         }
         .windowStyle(.volumetric)
+        .defaultSize(width: 0.6, height: 0.7, depth: 0.6, in: .meters)
 #else
         WindowGroup {
             ContentView()

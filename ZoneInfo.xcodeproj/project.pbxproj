@@ -19,6 +19,7 @@
 		FADC862A2C3325C600270835 /* RealityGlobeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC86292C3325C600270835 /* RealityGlobeView.swift */; };
 		FADC863B2C33324B00270835 /* TimeZoneTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC863A2C33324B00270835 /* TimeZoneTable.swift */; };
 		FADC863F2C3351E000270835 /* TimeZoneEntry+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC863E2C3351E000270835 /* TimeZoneEntry+UI.swift */; };
+		FADC86412C35C7A600270835 /* TimeZoneEntryColumnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADC86402C35C7A600270835 /* TimeZoneEntryColumnedView.swift */; };
 		FAE17517284D0D4B0059678D /* TimeZoneEntry+Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE17516284D0D4B0059678D /* TimeZoneEntry+Annotation.swift */; };
 		FAE1751A284D0D700059678D /* TimeZoneEntry+AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE17519284D0D700059678D /* TimeZoneEntry+AnnotationView.swift */; };
 		FAE1751D284D6A4A0059678D /* TimeZoneEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */; };
@@ -41,6 +42,7 @@
 		FADC86392C3329B100270835 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FADC863A2C33324B00270835 /* TimeZoneTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneTable.swift; sourceTree = "<group>"; };
 		FADC863E2C3351E000270835 /* TimeZoneEntry+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZoneEntry+UI.swift"; sourceTree = "<group>"; };
+		FADC86402C35C7A600270835 /* TimeZoneEntryColumnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneEntryColumnedView.swift; sourceTree = "<group>"; };
 		FAE17516284D0D4B0059678D /* TimeZoneEntry+Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZoneEntry+Annotation.swift"; sourceTree = "<group>"; };
 		FAE17519284D0D700059678D /* TimeZoneEntry+AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZoneEntry+AnnotationView.swift"; sourceTree = "<group>"; };
 		FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneEntryView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				FA3E97C5283FCA2300708EA5 /* MapView.swift */,
 				FA07BA43283FC2F7005B8EF7 /* ContentView.swift */,
 				FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */,
+				FADC86402C35C7A600270835 /* TimeZoneEntryColumnedView.swift */,
 				FADC86292C3325C600270835 /* RealityGlobeView.swift */,
 				FADC86222C3277C100270835 /* EarthResources */,
 				FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */,
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE1751D284D6A4A0059678D /* TimeZoneEntryView.swift in Sources */,
+				FADC86412C35C7A600270835 /* TimeZoneEntryColumnedView.swift in Sources */,
 				FA07BA54283FC2F8005B8EF7 /* ContentView.swift in Sources */,
 				FA3E97C6283FCA2300708EA5 /* MapView.swift in Sources */,
 				FA07BA52283FC2F8005B8EF7 /* ZoneInfoApp.swift in Sources */,

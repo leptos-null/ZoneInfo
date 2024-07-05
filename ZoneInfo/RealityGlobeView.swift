@@ -20,6 +20,9 @@ struct RealityGlobeView: View {
     
     @State private var selectedEntry: TimeZoneEntry?
     
+    @State private var globeEntity: Entity = .init()
+    @State private var baseGlobeRotation: simd_quatf?
+    
     init() {
         // "/var/db/timezone/zoneinfo/zone.tab"
         let file = URL(fileURLWithPath: "/usr/share/zoneinfo/zone.tab")
@@ -62,6 +65,8 @@ struct RealityGlobeView: View {
                 collisionShape: .generateSphere(radius: globeRadius),
                 mass: 0
             )
+            globe.components.set(InputTargetComponent())
+            globeEntity = globe
             
             let pinRadius: Float = 0.004
             let pinMaterial = UnlitMaterial(color: .systemPurple.withAlphaComponent(0.7))
@@ -84,8 +89,8 @@ struct RealityGlobeView: View {
             }
             
             if let detailAttachment = attachments.entity(for: AttachmentID.entryDetail) {
-                detailAttachment.position = .init(x: 0, y: -0.32, z: 0.23)
-                globe.addChild(detailAttachment)
+                detailAttachment.position = .init(x: 0, y: -0.26, z: 0.23)
+                realityContent.add(detailAttachment)
             }
             
             globe.position = .init(x: 0, y: 0.06, z: 0)
@@ -115,6 +120,58 @@ struct RealityGlobeView: View {
                     print(entryComponent.entry)
                     selectedEntry = entryComponent.entry
                 }
+        )
+        .gesture(
+            RotateGesture3D() // two-handed rotation gesture
+                .targetedToEntity(globeEntity)
+                .onChanged { value in
+                    if baseGlobeRotation == nil {
+                        baseGlobeRotation = value.entity.transform.rotation
+                    }
+                    guard let baseGlobeRotation else { return }
+                    let rotation = value.rotation
+                    // swap from SwiftUI coordinate system to RealityKit;
+                    // code thanks to
+                    // https://developer.apple.com/documentation/realitykit/transforming-realitykit-entities-with-gestures
+                    let flippedRotation = simd_quatf(
+                        angle: Float(rotation.angle.radians),
+                        axis: .init(
+                            x: Float(-rotation.axis.x),
+                            y: Float(rotation.axis.y),
+                            z: Float(-rotation.axis.z)
+                        )
+                    )
+                    let newOrientation = flippedRotation * baseGlobeRotation
+                    value.entity.transform.rotation = newOrientation
+                }
+                .onEnded { value in
+                    baseGlobeRotation = nil
+                }
+                .simultaneously(with: DragGesture() // one-handed custom rotation gesture
+                    .targetedToEntity(globeEntity)
+                    .onChanged { value in
+                        if baseGlobeRotation == nil {
+                            baseGlobeRotation = value.entity.transform.rotation
+                        }
+                        guard let baseGlobeRotation else { return }
+                        // from https://developer.apple.com/documentation/visionos/world
+                        let location3D = value.convert(value.location3D, from: .local, to: .scene)
+                        let startLocation3D = value.convert(value.startLocation3D, from: .local, to: .scene)
+                        let delta = location3D - startLocation3D
+                        
+                        // inspired by https://stackoverflow.com/a/76823868
+                        // similar to above, we want to adjust the coordinate system
+                        let transformAngles = Transform(
+                            pitch: atan(-delta.y) * .pi,
+                            yaw: atan(delta.x) * .pi
+                        )
+                        let newOrientation = transformAngles.rotation * baseGlobeRotation
+                        value.entity.transform.rotation = newOrientation
+                    }
+                    .onEnded { value in
+                        baseGlobeRotation = nil
+                    }
+                )
         )
     }
 }

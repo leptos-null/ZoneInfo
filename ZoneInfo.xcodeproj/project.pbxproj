@@ -12,6 +12,7 @@
 		FA07BA56283FC2F8005B8EF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */; };
 		FA07BA61283FC3B5005B8EF7 /* TimeZoneEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA07BA60283FC3B5005B8EF7 /* TimeZoneEntry.swift */; };
 		FA3E97C6283FCA2300708EA5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E97C5283FCA2300708EA5 /* MapView.swift */; };
+		FA78A9902C38B9DE0002F4A8 /* RealityRotateViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA78A98F2C38B9DE0002F4A8 /* RealityRotateViewModifier.swift */; };
 		FADC86212C326A3600270835 /* 8k_earth_daymap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FADC86202C326A3600270835 /* 8k_earth_daymap.jpg */; platformFilters = (xros, ); };
 		FADC86262C3277EC00270835 /* 8k_earth_normal_map.tif in Resources */ = {isa = PBXBuildFile; fileRef = FADC86232C3277EC00270835 /* 8k_earth_normal_map.tif */; platformFilters = (xros, ); };
 		FADC86272C3277EC00270835 /* 8k_earth_nightmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FADC86242C3277EC00270835 /* 8k_earth_nightmap.jpg */; platformFilters = (xros, ); };
@@ -33,6 +34,7 @@
 		FA07BA51283FC2F8005B8EF7 /* ZoneInfo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZoneInfo.entitlements; sourceTree = "<group>"; };
 		FA07BA60283FC3B5005B8EF7 /* TimeZoneEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneEntry.swift; sourceTree = "<group>"; };
 		FA3E97C5283FCA2300708EA5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		FA78A98F2C38B9DE0002F4A8 /* RealityRotateViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityRotateViewModifier.swift; sourceTree = "<group>"; };
 		FADC861F2C320CA300270835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FADC86202C326A3600270835 /* 8k_earth_daymap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8k_earth_daymap.jpg; sourceTree = "<group>"; };
 		FADC86232C3277EC00270835 /* 8k_earth_normal_map.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = 8k_earth_normal_map.tif; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				FAE1751C284D6A4A0059678D /* TimeZoneEntryView.swift */,
 				FADC86402C35C7A600270835 /* TimeZoneEntryColumnedView.swift */,
 				FADC86292C3325C600270835 /* RealityGlobeView.swift */,
+				FA78A98F2C38B9DE0002F4A8 /* RealityRotateViewModifier.swift */,
 				FADC86222C3277C100270835 /* EarthResources */,
 				FA07BA44283FC2F8005B8EF7 /* Assets.xcassets */,
 				FA07BA51283FC2F8005B8EF7 /* ZoneInfo.entitlements */,
@@ -191,6 +194,7 @@
 				FA07BA61283FC3B5005B8EF7 /* TimeZoneEntry.swift in Sources */,
 				FAE17517284D0D4B0059678D /* TimeZoneEntry+Annotation.swift in Sources */,
 				FAE1751A284D0D700059678D /* TimeZoneEntry+AnnotationView.swift in Sources */,
+				FA78A9902C38B9DE0002F4A8 /* RealityRotateViewModifier.swift in Sources */,
 				FADC863F2C3351E000270835 /* TimeZoneEntry+UI.swift in Sources */,
 				FADC862A2C3325C600270835 /* RealityGlobeView.swift in Sources */,
 			);

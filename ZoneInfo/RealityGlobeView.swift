@@ -21,7 +21,6 @@ struct RealityGlobeView: View {
     @State private var selectedEntry: TimeZoneEntry?
     
     @State private var globeEntity: Entity = .init()
-    @State private var baseGlobeRotation: simd_quatf?
     
     init() {
         // "/var/db/timezone/zoneinfo/zone.tab"
@@ -121,58 +120,7 @@ struct RealityGlobeView: View {
                     selectedEntry = entryComponent.entry
                 }
         )
-        .gesture(
-            RotateGesture3D() // two-handed rotation gesture
-                .targetedToEntity(globeEntity)
-                .onChanged { value in
-                    if baseGlobeRotation == nil {
-                        baseGlobeRotation = value.entity.transform.rotation
-                    }
-                    guard let baseGlobeRotation else { return }
-                    let rotation = value.rotation
-                    // swap from SwiftUI coordinate system to RealityKit;
-                    // code thanks to
-                    // https://developer.apple.com/documentation/realitykit/transforming-realitykit-entities-with-gestures
-                    let flippedRotation = simd_quatf(
-                        angle: Float(rotation.angle.radians),
-                        axis: .init(
-                            x: Float(-rotation.axis.x),
-                            y: Float(rotation.axis.y),
-                            z: Float(-rotation.axis.z)
-                        )
-                    )
-                    let newOrientation = flippedRotation * baseGlobeRotation
-                    value.entity.transform.rotation = newOrientation
-                }
-                .onEnded { value in
-                    baseGlobeRotation = nil
-                }
-                .simultaneously(with: DragGesture() // one-handed custom rotation gesture
-                    .targetedToEntity(globeEntity)
-                    .onChanged { value in
-                        if baseGlobeRotation == nil {
-                            baseGlobeRotation = value.entity.transform.rotation
-                        }
-                        guard let baseGlobeRotation else { return }
-                        // from https://developer.apple.com/documentation/visionos/world
-                        let location3D = value.convert(value.location3D, from: .local, to: .scene)
-                        let startLocation3D = value.convert(value.startLocation3D, from: .local, to: .scene)
-                        let delta = location3D - startLocation3D
-                        
-                        // inspired by https://stackoverflow.com/a/76823868
-                        // similar to above, we want to adjust the coordinate system
-                        let transformAngles = Transform(
-                            pitch: atan(-delta.y) * .pi,
-                            yaw: atan(delta.x) * .pi
-                        )
-                        let newOrientation = transformAngles.rotation * baseGlobeRotation
-                        value.entity.transform.rotation = newOrientation
-                    }
-                    .onEnded { value in
-                        baseGlobeRotation = nil
-                    }
-                )
-        )
+        .addRotateGestures(to: globeEntity)
     }
 }
 

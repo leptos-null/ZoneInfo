@@ -11,12 +11,67 @@ import SwiftUI
 import RealityKit
 import CoreLocation
 
+final class RealityGlobeViewModel: ObservableObject {
+    // not marking this as published so that the RealityView can
+    // remove entries from this collection without causing the view to update again
+    private(set) var dirtyEntries: Set<TimeZoneEntry> = []
+    
+    private var registry: [TimeZoneEntry: Timer] = [:]
+    private var notificationObserver: (any NSObjectProtocol)?
+    
+    init() {
+        notificationObserver = NotificationCenter.default.addObserver(forName: .NSSystemClockDidChange, object: nil, queue: .main) { [weak self] _ in
+            guard let self else { return }
+            while let (entry, timer) = self.registry.popFirst() {
+                timer.invalidate()
+                self.dirtyEntries.insert(entry)
+                self.objectWillChange.send()
+            }
+        }
+    }
+    
+    func register(entry: TimeZoneEntry, at date: Date) {
+        if let existing = registry[entry] {
+            existing.invalidate()
+        }
+        
+        guard let timeZone = entry.timeZone,
+              let next = timeZone.nextDaylightSavingTimeTransition(after: date) else { return }
+        // `interval` is not used since `repeats: false`
+        let timer = Timer(fire: next, interval: 1, repeats: false) { [weak self] timer in
+            timer.invalidate()
+            guard let self else { return }
+            self.dirtyEntries.insert(entry)
+            self.objectWillChange.send()
+        }
+        registry[entry] = timer
+        RunLoop.main.add(timer, forMode: .default)
+    }
+    
+    func popDirtyEntry(_ entry: TimeZoneEntry) -> Bool {
+        // it's notable that `remove` will cause a willSet/ didSet
+        // even if the values in the Set do not change
+        dirtyEntries.remove(entry) != nil
+    }
+    
+    deinit {
+        for (_, timer) in registry {
+            timer.invalidate()
+        }
+        if let notificationObserver {
+            NotificationCenter.default.removeObserver(notificationObserver)
+        }
+    }
+}
+
 struct RealityGlobeView: View {
     private enum AttachmentID: Hashable {
         case entryDetail
     }
     
     let table: TimeZoneTable
+    
+    @StateObject private var viewModel = RealityGlobeViewModel()
     
     @State private var selectedEntry: TimeZoneEntry?
     
@@ -68,9 +123,12 @@ struct RealityGlobeView: View {
             globeEntity = globe
             
             let pinRadius: Float = 0.004
-            let pinMaterial = UnlitMaterial(color: .systemPurple.withAlphaComponent(0.7))
             
             for entry in table.entries {
+                let date: Date = .now
+                let pinMaterial = UnlitMaterial(color: entry.markerColor(for: date).withAlphaComponent(0.7))
+                viewModel.register(entry: entry, at: date)
+                
                 let pin = ModelEntity(
                     mesh: .generateSphere(radius: pinRadius),
                     materials: [pinMaterial],
@@ -94,6 +152,8 @@ struct RealityGlobeView: View {
             
             globe.position = .init(x: 0, y: 0.06, z: 0)
             realityContent.add(globe)
+        } update: { realityContent, attachments in
+            updateEntryMarkersIfNeeded(realityContent: realityContent)
         } placeholder: {
             ProgressView()
         } attachments: {
@@ -121,6 +181,36 @@ struct RealityGlobeView: View {
                 }
         )
         .addRotateGestures(to: globeEntity)
+    }
+    
+    private func updateEntryMarkersIfNeeded(realityContent: RealityViewContent) {
+        if viewModel.dirtyEntries.isEmpty { return }
+        
+        realityContent.entities.forEach { entities in
+            entities.children.forEach { child in
+                guard let entryComponent = child.components[TimeZoneEntryComponent.self],
+                      var modelComponent = child.components[ModelComponent.self] else { return }
+                let entry = entryComponent.entry
+                guard viewModel.popDirtyEntry(entry) else { return }
+                
+                var materials = modelComponent.materials
+                let colorIndex = materials.firstIndex {
+                    $0 is UnlitMaterial
+                }
+                
+                let date: Date = .now
+                let pinMaterial = UnlitMaterial(color: entry.markerColor(for: date).withAlphaComponent(0.7))
+                viewModel.register(entry: entry, at: date)
+                
+                if let colorIndex {
+                    materials[colorIndex] = pinMaterial
+                } else {
+                    materials.append(pinMaterial)
+                }
+                modelComponent.materials = materials
+                child.components[ModelComponent.self] = modelComponent
+            }
+        }
     }
 }
 

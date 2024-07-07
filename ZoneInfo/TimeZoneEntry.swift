@@ -105,3 +105,13 @@ extension TimeZoneEntry {
         return CLLocationDegrees(signOf: degrees, magnitudeOf: degrees.magnitude + minutes/60 + seconds/(60 * 60))
     }
 }
+
+extension TimeZoneEntry: Hashable {
+    static func == (lhs: TimeZoneEntry, rhs: TimeZoneEntry) -> Bool {
+        lhs.identifier == rhs.identifier
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
+    }
+}

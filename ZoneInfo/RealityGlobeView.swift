@@ -151,6 +151,19 @@ struct RealityGlobeView: View {
             }
             
             globe.position = .init(x: 0, y: 0.06, z: 0)
+            
+            // rotate globe such that the user's current time zone is centered.
+            // this matches MapKit behavior
+            let matchIdentifier = TimeZone.current.identifier
+            let matchEntry = table.entries.first { $0.identifier == matchIdentifier }
+            if let matchEntry {
+                let coordinate = matchEntry.coordinate
+                
+                let x = simd_quatf(angle: Float(coordinate.latitude / 180 * .pi), axis: .init(x: 1, y: 0, z: 0))
+                let y = simd_quatf(angle: Float(-coordinate.longitude / 180 * .pi), axis: .init(x: 0, y: 1, z: 0))
+                globe.orientation = x * y
+            }
+            
             realityContent.add(globe)
         } update: { realityContent, attachments in
             updateEntryMarkersIfNeeded(realityContent: realityContent)

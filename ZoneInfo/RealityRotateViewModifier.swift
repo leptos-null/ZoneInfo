@@ -5,6 +5,8 @@
 //  Created by Leptos on 7/5/24.
 //
 
+#if os(visionOS)
+
 import SwiftUI
 import RealityKit
 
@@ -75,3 +77,5 @@ extension View {
         modifier(RealityRotateViewModifier(targetEntity: entity))
     }
 }
+
+#endif

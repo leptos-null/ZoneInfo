@@ -14,3 +14,5 @@ Each pin is colored by its offset from GMT so that the user may visualize region
 <img width="100%" src="Screenshots/macOS-detail-dark.png" alt="ZoneInfo on macOS">
 
 <img width="46.5%" src="Screenshots/iOS-map-dark.png" alt="ZoneInfo on iOS with only the map visible"> <img width="46.5%" src="Screenshots/iOS-detail-dark.png" alt="ZoneInfo on iOS with the detail panel open">
+
+<img width="100%" src="Screenshots/visionOS-detail.png" alt="ZoneInfo on visionOS">

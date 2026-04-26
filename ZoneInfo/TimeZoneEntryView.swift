@@ -30,51 +30,51 @@ struct TimeZoneEntryView: View {
                 if let format = dateFormatStyle {
                     Group {
                         KeyValueView(key: "Short Specific Name") {
-                            Text(timelineContext.date, format: format.timeZone(.specificName(.short)))
+                            Text(timelineContext.date.formatted(format.timeZone(.specificName(.short))))
                         }
                         KeyValueView(key: "Long Specific Name") {
-                            Text(timelineContext.date, format: format.timeZone(.specificName(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.specificName(.long))))
                         }
                         
                         Divider()
                     }
                     Group {
                         KeyValueView(key: "Exemplar Location") {
-                            Text(timelineContext.date, format: format.timeZone(.exemplarLocation))
+                            Text(timelineContext.date.formatted(format.timeZone(.exemplarLocation)))
                         }
                         KeyValueView(key: "Generic Location") {
-                            Text(timelineContext.date, format: format.timeZone(.genericLocation))
+                            Text(timelineContext.date.formatted(format.timeZone(.genericLocation)))
                         }
                         
                         Divider()
                     }
                     Group {
                         KeyValueView(key: "Short Generic Name") {
-                            Text(timelineContext.date, format: format.timeZone(.genericName(.short)))
+                            Text(timelineContext.date.formatted(format.timeZone(.genericName(.short))))
                         }
                         KeyValueView(key: "Long Generic Name") {
-                            Text(timelineContext.date, format: format.timeZone(.genericName(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.genericName(.long))))
                         }
                         
                         Divider()
                     }
                     Group {
                         KeyValueView(key: "Short Identifier") {
-                            Text(timelineContext.date, format: format.timeZone(.identifier(.short)))
+                            Text(timelineContext.date.formatted(format.timeZone(.identifier(.short))))
                         }
                         KeyValueView(key: "Long Identifier") {
-                            Text(timelineContext.date, format: format.timeZone(.identifier(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.identifier(.long))))
                         }
                         
                         Divider()
                     }
                     
                     KeyValueView(key: "ISO 8601") {
-                        Text(timelineContext.date, format: format.timeZone(.iso8601(.long)))
+                        Text(timelineContext.date.formatted(format.timeZone(.iso8601(.long))))
                     }
                     
                     KeyValueView(key: "Local Time") {
-                        Text(timelineContext.date, format: format)
+                        Text(timelineContext.date.formatted(format))
                     }
                 } else {
                     KeyValueView(key: "Identifier") {

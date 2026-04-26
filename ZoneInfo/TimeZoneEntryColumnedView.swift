@@ -30,51 +30,51 @@ struct TimeZoneEntryColumnedView: View {
                 VStack(spacing: 8) {
                     RowView {
                         KeyValueView(key: "Short Specific Name") {
-                            Text(timelineContext.date, format: format.timeZone(.specificName(.short)))
+                            Text(timelineContext.date.formatted(format.timeZone(.specificName(.short))))
                         }
                     } trailing: {
                         KeyValueView(key: "Long Specific Name") {
-                            Text(timelineContext.date, format: format.timeZone(.specificName(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.specificName(.long))))
                         }
                     }
                     Divider()
                     RowView {
                         KeyValueView(key: "Exemplar Location") {
-                            Text(timelineContext.date, format: format.timeZone(.exemplarLocation))
+                            Text(timelineContext.date.formatted(format.timeZone(.exemplarLocation)))
                         }
                     } trailing: {
                         KeyValueView(key: "Generic Location") {
-                            Text(timelineContext.date, format: format.timeZone(.genericLocation))
+                            Text(timelineContext.date.formatted(format.timeZone(.genericLocation)))
                         }
                     }
                     Divider()
                     RowView {
                         KeyValueView(key: "Short Generic Name") {
-                            Text(timelineContext.date, format: format.timeZone(.genericName(.short)))
+                            Text(timelineContext.date.formatted(format.timeZone(.genericName(.short))))
                         }
                     } trailing: {
                         KeyValueView(key: "Long Generic Name") {
-                            Text(timelineContext.date, format: format.timeZone(.genericName(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.genericName(.long))))
                         }
                     }
                     Divider()
                     RowView {
                         KeyValueView(key: "Short Identifier") {
-                            Text(timelineContext.date, format: format.timeZone(.identifier(.short)))
+                            Text(timelineContext.date.formatted(format.timeZone(.identifier(.short))))
                         }
                     } trailing: {
                         KeyValueView(key: "Long Identifier") {
-                            Text(timelineContext.date, format: format.timeZone(.identifier(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.identifier(.long))))
                         }
                     }
                     Divider()
                     RowView {
                         KeyValueView(key: "ISO 8601") {
-                            Text(timelineContext.date, format: format.timeZone(.iso8601(.long)))
+                            Text(timelineContext.date.formatted(format.timeZone(.iso8601(.long))))
                         }
                     } trailing: {
                         KeyValueView(key: "Local Time") {
-                            Text(timelineContext.date, format: format)
+                            Text(timelineContext.date.formatted(format))
                         }
                     }
                 }

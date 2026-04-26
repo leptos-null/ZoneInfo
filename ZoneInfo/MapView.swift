@@ -56,7 +56,7 @@ struct MapView {
             return false
         }
         
-        // evidently the map view holds these in a different order
+        // evidently the map view holds these in a different order.
         // sort elements to reduce unnecessary insertions and removals
         let previous = mapView.annotations
             .sorted(by: annotationSort)
@@ -95,8 +95,12 @@ struct MapView {
         mapView.removeAnnotations(remove)
         mapView.addAnnotations(add)
         
-        if let selection = selection?.wrappedValue {
-            mapView.selectAnnotation(selection, animated: false)
+        if let selectionBinding = selection {
+            if let selection = selectionBinding.wrappedValue {
+                mapView.selectAnnotation(selection, animated: false)
+            } else {
+                mapView.deselectAnnotation(nil, animated: false)
+            }
         }
     }
     
